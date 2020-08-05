@@ -1,0 +1,28 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# FlexLikeStar: Easy-to-make nice regression tables for MSWord and PowerPoint
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+The package `stargazer` is to make good regression table for LaTex, HTML
+and text file easily, but not to produce it for other types such as
+MSWord and PowerPoint. To overcome, one solution is to use the package
+`flextable` which makes good-looking table for HTML, MSWord, PowerPoint
+and so on. Another good point is flexibiliy. However, high flexibility
+results in the fact that you cannot produce beautiful regression table
+easily To produce regression tables like `stargazer`, you need very long
+code. This package called `FlexLikeStar` tries to overcome shortcoming
+that both existing packages have: to make beautiful regression table for
+MSWord and PowerPoint easily.
+
+## Installation
+
+You can install from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("KatoPachi/FlexLikeStar")
+```
