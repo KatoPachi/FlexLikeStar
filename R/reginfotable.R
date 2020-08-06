@@ -11,8 +11,8 @@
 reginfotable <- function(reginfo) {
 
   stats.list <- data.frame(
-    key = c("rsq", "adj.rsq", "f", "n"),
-    name = c("R2", "Adjusted R2", "F-stat", "N"),
+    key = c("n", "rsq", "adj.rsq", "f"),
+    name = c("N", "R2", "Adjusted R2", "F-stat"),
     stringsAsFactors =  FALSE
   )
 

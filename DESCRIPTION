@@ -15,4 +15,5 @@ Imports:
     rlist,
     stringr
 Suggests: 
-    testthat
+    testthat,
+    lmtest
