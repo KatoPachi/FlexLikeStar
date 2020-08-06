@@ -11,8 +11,6 @@ utils::globalVariables(c("key", "stat"))
 #'
 #' @return list: dataframe that only contains statistics of regressions, and names of extracting statistics
 #'
-#' @export
-#'
 
 lm.reginfo <- function(reg, keep.stat = NULL, df = NULL, digits = NULL) {
 

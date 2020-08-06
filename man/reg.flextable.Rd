@@ -73,7 +73,7 @@ reg.flextable(
 
 \item{minor.change}{a function that change specific style of table}
 
-\item{star}{a character vector symbols representing statistically significance at 10%, 5%, and 1% level}
+\item{star}{a character vector symbols representing statistically significance at 10\%, 5\%, and 1\% level}
 
 \item{keep.stat}{a character vector that specifies which model statistics should be kept in the regression table output. For instance keep.stat = c("n","adj.rsq") will produce a table that only includes statistics for the number of observations and Adjusted R-squared.}
 }

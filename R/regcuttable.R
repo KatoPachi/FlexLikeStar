@@ -9,7 +9,7 @@
 #'
 #' @return data.frame which contains regression coefficients
 #'
-#' @export
+
 
 regcuttable <- function(regcut, covariate.labels = NULL, order = NULL) {
 

@@ -30,7 +30,7 @@ bottom_border <- function(x) {
 #' @param covariate.width a numeric value of width of covariate column (inches)
 #' @param reg.width a numeric value of width of regression column (inches)
 #' @param minor.change a function that change specific style of table
-#' @param star a character vector symbols representing statistically significance at 10%, 5%, and 1% level
+#' @param star a character vector symbols representing statistically significance at 10\%, 5\%, and 1\% level
 #' @param keep.stat a character vector that specifies which model statistics should be kept in the regression table output. For instance keep.stat = c("n","adj.rsq") will produce a table that only includes statistics for the number of observations and Adjusted R-squared.
 #'
 #' @return object "flextable" with regression table

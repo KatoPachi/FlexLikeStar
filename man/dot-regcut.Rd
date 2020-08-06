@@ -35,7 +35,7 @@ coeftest.regcut(
 
 \item{intercept.include}{logical value including intercept}
 
-\item{star}{vector of symbols representing statistically significance at 10%, 5%, and 1% level}
+\item{star}{vector of symbols representing statistically significance at 10\%, 5\%, and 1\% level}
 }
 \value{
 generate column of coefficient of regression

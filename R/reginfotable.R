@@ -6,7 +6,7 @@
 #' @param reginfo list of regression statistics extracted by .reginfo function
 #'
 #' @return data.frame of regression statistics
-#' @export
+#'
 
 reginfotable <- function(reginfo) {
 

@@ -8,7 +8,7 @@
 #' @param omit omit variable name
 #' @param digits maximum digits
 #' @param intercept.include logical value including intercept
-#' @param star vector of symbols representing statistically significance at 10%, 5%, and 1% level
+#' @param star vector of symbols representing statistically significance at 10\%, 5\%, and 1\% level
 #'
 #' @return generate column of coefficient of regression
 #'
@@ -77,7 +77,7 @@ lm.regcut <- function(
 #' @param omit omit variable name
 #' @param digits maximum digits
 #' @param intercept.include logical value including intercept
-#' @param star vector of symbols representing statistically significance at 10%, 5%, and 1% level
+#' @param star vector of symbols representing statistically significance at 10\%, 5\%, and 1\% level
 #'
 
 

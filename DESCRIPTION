@@ -3,7 +3,7 @@ Type: Package
 Title: Beautiful regression table for MSWord and PowerPoint
 Version: 0.1.0
 Authors@R: person("Hiroki", "Kato", role = c("aut", "cre"), email = "vge008kh@student.econ.osaka-u.ac.jp")
-Description: Easy-to-make nice regression tables for MSWord and PowerPoint 
+Description: Easy-to-make nice regression tables for MSWord and PowerPoint. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
