@@ -70,4 +70,78 @@ test_that("reg.flextable", {
 
 })
 
+test_that("add.lines", {
+  # functions
+  add.lines <- list(
+    c("test1", "brah", "brah", "brah"),
+    c("test2", 0.1, 0.2, 0.3)
+  )
 
+  cut <- list.reg1 %>% list.map(~lm.regcut(., keep = c("Sex"), digits = 3, intercept.include = FALSE, star = c("*", "**", "***")))
+  cut.tab <- regcuttable(
+    cut,
+    covariate.labels = c("female", "female X 2nd Class", "female X 3rd Class", "female X Crew", "female X Adult"),
+    order = c(1, 3, 4, 5, 2)
+  )
+
+
+  info <- list.reg1 %>% list.map(~lm.reginfo(., keep.stat = c("n", "adj.rsq"), df = TRUE, digits = 3))
+  info.tab <- reginfotable(info)
+
+  TF <- add.lines %>% list.map(~ifelse(length(.) == ncol(cut.tab), 0, 1)) %>% unlist() %>% sum()
+
+  if (TF == 0) {
+    add.tab <- add.lines %>% list.rbind()
+  } else {
+    print("Error: there are vectors with invalid length. You should align with #regressions + 1.")
+  }
+
+  show.tab <- data.frame(rbind(cut.tab, add.tab, info.tab))
+
+  reg_name <- 1:3 %>% list.map(paste("(", ., ")", sep="")) %>% unlist()
+  colnames(show.tab) <- c("Variables", reg_name)
+
+  want <- flextable(show.tab) %>%
+    set_header_labels("Variables" = "") %>%
+    add_footer_row(
+      values = paste("***", " Significance at 1% level", sep = ""),
+      colwidths = 4) %>%
+    add_footer_row(
+      values = paste("**", " Significance at 5% level", sep = ""),
+      colwidths = 4, top = FALSE) %>%
+    add_footer_row(
+      values = paste("*", " Significance at 10% level", sep = ""),
+      colwidths = 4, top = FALSE) %>%
+    add_header_row(values = c("", rep("Survaival", 3)), top = TRUE) %>%
+    merge_h(part = "header") %>%
+    autofit() %>%
+    width(j = 1, 1) %>%
+    width(j = 2:4, width = 1.5) %>%
+    align(j = 1, align = "left", part = "all") %>%
+    align(j = 2:4, align = "center", part = "all") %>%
+    fontsize(size = 12, part = "all") %>%
+    border_remove() %>%
+    hline_top(part = "header", border = fp_border()) %>%
+    hline_bottom(part = "head", border = fp_border()) %>%
+    hline_bottom(part = "body", border = fp_border()) %>%
+    set_caption("(\\#tab:taitanic) Survaival Probability of Taitanic") %>%
+    hline(i = 1, j = 2:4, part = "header", border = fp_border())
+
+  # test
+  test <- reg.flextable(
+    list.reg1,
+    title = "Survaival Probability of Taitanic",
+    label = "taitanic",
+    dep.var.caption = c("Survaival"), dep.var.caption.separate = c(3),
+    keep = c("Sex"),
+    intercept.include = FALSE,
+    covariate.labels = c("female", "female X 2nd Class", "female X 3rd Class", "female X Crew", "female X Adult"),
+    add.lines = add.lines,
+    order = c(1, 3, 4, 5, 2),
+    digits = 3, covariate.width = 1, reg.width = .5,
+    keep.stat = c("n", "adj.rsq")
+  )
+
+  expect_equal(test, want)
+
+})
