@@ -22,6 +22,7 @@ bottom_border <- function(x) {
 #' @param intercept.include logical value including intercept
 #' @param order a vector of numerical indexes that indicates the order in which variables will appear in the output.
 #' @param covariate.labels a character vector of labels for covariates in regression tables. A value of NA for any element means that stargazer will print the corresponding variable name.
+#' @param add.lines a list containing vectors that shows additional lines.
 #' @param df a logical value that indicates whether the degrees of freedom of model statistics should be reported.
 #' @param digits an integer that indicates how many decimal places should be used.
 #' @param notes a character vector containing notes to be included below the table.
@@ -45,6 +46,7 @@ reg.flextable <- function(
   keep = NULL, omit = NULL,
   intercept.include = TRUE,
   order = NULL, covariate.labels = NULL,
+  add.lines = NULL,
   df = TRUE, digits = 2,
   notes = NULL, font.size = 12, autofit = TRUE,
   covariate.width = 1.5, reg.width = 1,
@@ -103,7 +105,22 @@ reg.flextable <- function(
     )
 
   info.tab <- reginfotable(info)
-  show.tab <- data.frame(rbind(cut.tab, info.tab))
+
+  if(is.null(add.lines)) {
+
+    show.tab <- data.frame(rbind(cut.tab, info.tab))
+
+  } else {
+    TF <- add.lines %>% list.map(~ifelse(length(.) == ncol(cut.tab), 0, 1)) %>% unlist() %>% sum()
+
+    if (TF == 0) {
+      add.tab <- add.lines %>% list.rbind()
+    } else {
+      stop("Error: there are vectors with invalid length. You should align with #regressions + 1.")
+    }
+
+    show.tab <- data.frame(rbind(cut.tab, add.tab, info.tab))
+  }
 
   reg_name <- 1:regn %>%
     list.map(paste("(", ., ")", sep="")) %>%
