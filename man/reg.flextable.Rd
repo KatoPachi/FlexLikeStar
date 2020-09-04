@@ -18,6 +18,7 @@ reg.flextable(
   intercept.include = TRUE,
   order = NULL,
   covariate.labels = NULL,
+  add.lines = NULL,
   df = TRUE,
   digits = 2,
   notes = NULL,
@@ -56,6 +57,8 @@ reg.flextable(
 \item{order}{a vector of numerical indexes that indicates the order in which variables will appear in the output.}
 
 \item{covariate.labels}{a character vector of labels for covariates in regression tables. A value of NA for any element means that stargazer will print the corresponding variable name.}
+
+\item{add.lines}{a list containing vectors that shows additional lines.}
 
 \item{df}{a logical value that indicates whether the degrees of freedom of model statistics should be reported.}
 
